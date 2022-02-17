@@ -51,10 +51,10 @@ ping -I eth1 www.google.com
 
 ## Battery Pack board
 ![Battery Board Charge](./batteryboard-charge.jpg)
-Plug the micro usb to the board to charge. Disconnect everything else.
-The red light should turn off
-The blue light should be turn on.
+- Plug the micro usb to the board to charge. Disconnect everything else.
+- The red light should be turned off
+- The blue light should be turned on.
 
 ![Battery Board Use](./batteryboard-use.jpg)
-To use it, you remove the micro usb.
-Plug the usb A to micro usb cable from the usb of the battery pack board to the microusb of the pi.
+- To use it, you remove the micro usb.
+- Plug the usb A to micro usb cable from the usb of the battery pack board to the microusb of the pi.
