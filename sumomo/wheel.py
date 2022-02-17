@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO          
 from time import sleep
 
+# Number setting is gpio pin number
 leftin1 = 24
 leftin2 = 23
 leften = 25
