@@ -57,4 +57,4 @@ ping -I eth1 www.google.com
 
 ![Battery Board Use](./batteryboard-use.jpg)
 - To use it, you remove the micro usb.
-- Plug the usb A to micro usb cable from the usb of the battery pack board to the microusb of the pi.
+- Use a USB A to micro usb cable to connect the USB A of the battery pack board to the micro usb of the pi.
