@@ -1,5 +1,28 @@
 ## Raspiberry pi 3
 
+4GB Ram, with Raspbian OS
+
+I use network manager to manage my network
+```
+apt-get install network-manager
+systemctl start NetworkManager.service
+systemctl enable NetworkManager.service
+
+nano /etc/dhcpcd.conf
+denyinterfaces wlan0
+
+nano /etc/NetworkManager/NetworkManager.conf
+[main]
+plugins=ifupdown,keyfile
+dhcp=internal
+[ifupdown]
+managed=true
+
+nano /etc/network/interfaces
+source-directory /etc/network/interfaces.d
+
+```
+
 ## 4G Doogle
 ### The hardware itself
 
@@ -39,6 +62,10 @@ Then you can use nmtui to activate eth1. Ping the connection using that specific
 ```
 ping -I eth1 www.google.com
 ```
+
+### Can also use the doogle as wifi to 4g bridge
+- Dont need to worry if you cannot use the doogle natively
+- You can just plug it in, have the wifi of pi to connect to the ssd of the doogle
 
 ## Motor Driver 
 ![L298N](./L298N.jpg)
