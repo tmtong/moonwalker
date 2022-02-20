@@ -5,6 +5,8 @@ gitrcommit:
 	# git add -u
 	-git add src/*
 	-git add src/*/*
+	-git add src/*/*/*
+	-git add src/*/*/*/*
 	-git add doc Makefile
 	-git commit -a -m "`date`"
 	git pull
