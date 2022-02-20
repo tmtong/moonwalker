@@ -16,4 +16,4 @@ gitrupdate:
 	git pull
 build:
 	colcon build
-	. install/local_setup.bash
+	source install/local_setup.bash
