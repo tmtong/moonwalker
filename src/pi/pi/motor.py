@@ -3,13 +3,7 @@ from rclpy.node import Node
 # import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 import json
-
-class SimulatedPWN():
-    def __init__(self, name):
-        self.name = name
-    def ChangeDutyCycle(self, speed):
-        print('Pin ' + self.name + ' run at ' + str(speed))
-
+import argparse
 
 class MotorSubscriber(Node):
 
@@ -55,8 +49,32 @@ class MotorSubscriber(Node):
         self.rightpwm=GPIO.PWM(righten,1000)
         self.rightpwm.start(25)
 
-        
-            
+    def change_left_motor(self, left_speed):
+        if left_speed < 0:
+            self.leftpwm.ChangeDutyCycle(abs(left_speed))
+            GPIO.output(self.leftin1,GPIO.LOW)
+            GPIO.output(self.leftin2,GPIO.HIGH)
+        if left_speed == 0:
+            self.leftpwm.ChangeDutyCycle(0)
+            GPIO.output(self.leftin1,GPIO.LOW)
+            GPIO.output(self.leftin2,GPIO.LOW)
+        if left_speed > 0:
+            self.leftpwm.ChangeDutyCycle(abs(left_speed))
+            GPIO.output(self.leftin1,GPIO.HIGH)
+            GPIO.output(self.leftin2.GPIO.LOW)
+    def change_right_motor(self, right_speed):
+        if right_speed < 0:
+            self.rightpwn.ChangeDutyCycle(abs(right_speed))
+            GPIO.output(self.leftin1,GPIO.LOW)
+            GPIO.output(self.leftin2,GPIO.HIGH)
+        if right_speed == 0:
+            self.rightpwm.ChangeDutyCycle(0)
+            GPIO.output(self.rightin1,GPIO.LOW)
+            GPIO.output(self.rightin2,GPIO.LOW)
+        if right_speed > 0:
+            self.rightpwm.ChangeDutyCycle(abs(right_speed))
+            GPIO.output(self.rightin1,GPIO.HIGH)
+            GPIO.output(self.rightin2.GPIO.LOW)
     def listener_callback(self, msg):
         left_speed = 0
         right_speed = 0
@@ -91,35 +109,13 @@ class MotorSubscriber(Node):
             left_speed = -full_speed
             right_speed = -full_speed
         
-        if left_speed < 0:
-            self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.HIGH)
-        if left_speed == 0:
-            self.leftpwm.ChangeDutyCycle(0)
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.LOW)
-        if left_speed > 0:
-            self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1,GPIO.HIGH)
-            GPIO.output(self.leftin2.GPIO.LOW)
-        if right_speed < 0:
-            self.rightpwn.ChangeDutyCycle(abs(right_speed))
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.HIGH)
-        if right_speed == 0:
-            self.rightpwm.ChangeDutyCycle(0)
-            GPIO.output(self.rightin1,GPIO.LOW)
-            GPIO.output(self.rightin2,GPIO.LOW)
-        if right_speed > 0:
-            self.rightpwm.ChangeDutyCycle(abs(right_speed))
-            GPIO.output(self.rightin1,GPIO.HIGH)
-            GPIO.output(self.rightin2.GPIO.LOW)
+        change_left_wheel(left_speed)
+        change_right_wheel(right_speed)
+        
+       
 
         self.get_logger().info('Received: "%s"' % str(msg.linear.x))
-
-
-def main(args=None):
+def ros_loop():
     rclpy.init(args=args)
 
     motor_subscriber = MotorSubscriber()
@@ -131,6 +127,27 @@ def main(args=None):
     # when the garbage collector destroys the node object)
     motor_subscriber.destroy_node()
     rclpy.shutdown()
+
+def main(args=None):
+
+    parser = argparse.ArgumentParser(description='L298N Driver')
+    parser.add_argument('--left', action='store', default=False,
+                    dest='left_test',
+                    help='Test left')
+    parser.add_argument('--right', action='store', default=False,
+                    dest='right_test',
+                    help='Test right')
+    parser.add_argument('--ros', action='store_true', default=False,
+                    dest='ros',
+                    help='Controlled by ROS Stack')
+    results = parser.parse_args()
+    if results.left_test != None:
+        change_left_motor(results.left_test)
+    elif results.right_test != None:
+        change_right_motor(results.right_test)
+    elif results.ros != None:
+        ros_loop()
+    
 
 
 if __name__ == '__main__':
