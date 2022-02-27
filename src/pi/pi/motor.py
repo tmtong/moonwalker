@@ -147,10 +147,11 @@ def main(args=None):
                     dest='ros',
                     help='Controlled by ROS Stack')
     results = parser.parse_args()
-    if results.left_test != None:
+    print(results)
+    if results.left_test != None and results.left_test != False:
         motor_subscriber = MotorSubscriber()
         motor_subscriber.change_left_motor(results.left_test)
-    elif results.right_test != None:
+    elif results.right_test != None and results.right_test != False:
         motor_subscriber = MotorSubscriber()
         motor_subscriber.change_right_motor(results.right_test)
     elif results.ros != None:
