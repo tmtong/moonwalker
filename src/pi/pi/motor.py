@@ -8,10 +8,11 @@ import argparse
 class MotorSubscriber(Node):
 
     def __init__(self):
-        
+        print('constructor')
         self.init_pins()
         # self.fake_pin()
     def connect(self):
+        print('connect')
         super().__init__('motor_subscriber')
         self.subscription = self.create_subscription(
             Twist,
@@ -25,6 +26,7 @@ class MotorSubscriber(Node):
         self.rightin1 = SimulatedPWN('rightin1')
         self.rightin2 = SimulatedPWN('rightin2')
     def init_pins(self):
+        print('init_pins')
         self.leftin1pin = 24
         self.leftin2pin = 23
         self.leften = 25
