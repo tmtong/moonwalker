@@ -65,7 +65,7 @@ class FakeMotorPublisher(Node):
             my_velocity.angular.z = -turn_angular_velocity
 
         self.publisher_.publish(my_velocity)
-        # self.get_logger().info('Publishing: "%s"' % my_velocity)
+        self.get_logger().info('Publishing: "%s"' % my_velocity)
         self.i += 1
 
 
