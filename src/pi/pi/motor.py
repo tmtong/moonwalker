@@ -34,49 +34,49 @@ class MotorSubscriber(Node):
         righten = 17
 
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(leftin1pin,GPIO.OUT)
-        GPIO.setup(leftin2pin,GPIO.OUT)
-        GPIO.setup(leften,GPIO.OUT)
-        GPIO.output(leftin1pin,GPIO.LOW)
-        GPIO.output(leftin2pin,GPIO.LOW)
+        GPIO.setup(self.leftin1pin,GPIO.OUT)
+        GPIO.setup(self.leftin2pin,GPIO.OUT)
+        GPIO.setup(self.leften,GPIO.OUT)
+        GPIO.output(self.leftin1pin,GPIO.LOW)
+        GPIO.output(self.leftin2pin,GPIO.LOW)
         self.leftpwm=GPIO.PWM(leften,1000)
         self.leftpwm.start(25)
 
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(rightin1pin,GPIO.OUT)
-        GPIO.setup(rightin2pin,GPIO.OUT)
-        GPIO.setup(righten,GPIO.OUT)
-        GPIO.output(rightin1pin,GPIO.LOW)
-        GPIO.output(rightin2pin,GPIO.LOW)
+        GPIO.setup(self.rightin1pin,GPIO.OUT)
+        GPIO.setup(self.rightin2pin,GPIO.OUT)
+        GPIO.setup(self.righten,GPIO.OUT)
+        GPIO.output(self.rightin1pin,GPIO.LOW)
+        GPIO.output(self.rightin2pin,GPIO.LOW)
         self.rightpwm=GPIO.PWM(righten,1000)
         self.rightpwm.start(25)
 
     def change_left_motor(self, left_speed):
         if left_speed < 0:
             self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.HIGH)
+            GPIO.output(self.leftin1pin,GPIO.LOW)
+            GPIO.output(self.leftin2pin,GPIO.HIGH)
         if left_speed == 0:
             self.leftpwm.ChangeDutyCycle(0)
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.LOW)
+            GPIO.output(self.leftin1pin,GPIO.LOW)
+            GPIO.output(self.leftin2pin,GPIO.LOW)
         if left_speed > 0:
             self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1,GPIO.HIGH)
-            GPIO.output(self.leftin2.GPIO.LOW)
+            GPIO.output(self.leftin1pin,GPIO.HIGH)
+            GPIO.output(self.leftin2pin.GPIO.LOW)
     def change_right_motor(self, right_speed):
         if right_speed < 0:
             self.rightpwn.ChangeDutyCycle(abs(right_speed))
-            GPIO.output(self.leftin1,GPIO.LOW)
-            GPIO.output(self.leftin2,GPIO.HIGH)
+            GPIO.output(self.leftin1pin,GPIO.LOW)
+            GPIO.output(self.leftin2pin,GPIO.HIGH)
         if right_speed == 0:
             self.rightpwm.ChangeDutyCycle(0)
-            GPIO.output(self.rightin1,GPIO.LOW)
-            GPIO.output(self.rightin2,GPIO.LOW)
+            GPIO.output(self.rightin1pin,GPIO.LOW)
+            GPIO.output(self.rightin2pin,GPIO.LOW)
         if right_speed > 0:
             self.rightpwm.ChangeDutyCycle(abs(right_speed))
-            GPIO.output(self.rightin1,GPIO.HIGH)
-            GPIO.output(self.rightin2.GPIO.LOW)
+            GPIO.output(self.rightin1pin,GPIO.HIGH)
+            GPIO.output(self.rightin2pin.GPIO.LOW)
     def listener_callback(self, msg):
         left_speed = 0
         right_speed = 0
