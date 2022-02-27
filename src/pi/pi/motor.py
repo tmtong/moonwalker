@@ -126,7 +126,7 @@ class MotorSubscriber(Node):
        
 
         self.get_logger().info('Received: "%s"' % str(msg.linear.x))
-def ros_loop():
+def ros_loop(args):
     rclpy.init(args=args)
 
     motor_subscriber = MotorSubscriber()
@@ -162,7 +162,7 @@ def main(args=None):
         motor_subscriber.change_right_motor(results.right_test)
         motor_subscriber.infinite_loop()
     elif results.ros != None and results.ros != False:
-        ros_loop()
+        ros_loop(args)
     
 
 
