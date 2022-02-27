@@ -34,7 +34,7 @@ class MotorSubscriber(Node):
         self.rightin1pin = 27
         self.rightin2pin = 22
         self.righten = 17
-
+        GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.leftin1pin,GPIO.OUT)
         GPIO.setup(self.leftin2pin,GPIO.OUT)
