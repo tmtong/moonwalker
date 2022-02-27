@@ -27,11 +27,11 @@ class MotorSubscriber(Node):
     def init_pins(self):
         self.leftin1pin = 24
         self.leftin2pin = 23
-        leften = 25
+        self.leften = 25
 
         self.rightin1pin = 27
         self.rightin2pin = 22
-        righten = 17
+        self.righten = 17
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.leftin1pin,GPIO.OUT)
