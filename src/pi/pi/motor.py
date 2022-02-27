@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 import json
 import argparse
-
+import time
 class MotorSubscriber(Node):
 
     def __init__(self):
@@ -53,10 +53,9 @@ class MotorSubscriber(Node):
         self.rightpwm=GPIO.PWM(self.righten,1000)
         self.rightpwm.start(25)
 
-        GPIO.output(self.leftin1pin,GPIO.LOW)
-        GPIO.output(self.leftin2pin,GPIO.HIGH)
+    def infinite_loop(self):
         while True:
-            print('running')
+            time.sleep(1)
     def change_left_motor(self, left_speed):
         print('left speed ' + str(left_speed))
         left_speed = float(left_speed)
@@ -157,9 +156,11 @@ def main(args=None):
     if results.left_test != None and results.left_test != False:
         motor_subscriber = MotorSubscriber()
         motor_subscriber.change_left_motor(results.left_test)
+        motor_subscriber.infinite_loop()
     elif results.right_test != None and results.right_test != False:
         motor_subscriber = MotorSubscriber()
         motor_subscriber.change_right_motor(results.right_test)
+        motor_subscriber.infinite_loop()
     elif results.ros != None and results.ros != False:
         ros_loop()
     
