@@ -75,7 +75,7 @@ class MotorSubscriber(Node):
         print('right speed ' + str(right_speed))
         right_speed = float(right_speed)
         if right_speed < 0:
-            self.rightpwn.ChangeDutyCycle(abs(right_speed))
+            self.rightpwm.ChangeDutyCycle(abs(right_speed))
             GPIO.output(self.leftin1pin,GPIO.LOW)
             GPIO.output(self.leftin2pin,GPIO.HIGH)
         if right_speed == 0:
