@@ -39,7 +39,7 @@ class MotorSubscriber(Node):
         GPIO.setup(self.leften,GPIO.OUT)
         GPIO.output(self.leftin1pin,GPIO.LOW)
         GPIO.output(self.leftin2pin,GPIO.LOW)
-        self.leftpwm=GPIO.PWM(leften,1000)
+        self.leftpwm=GPIO.PWM(self.leften,1000)
         self.leftpwm.start(25)
 
         GPIO.setmode(GPIO.BCM)
@@ -48,7 +48,7 @@ class MotorSubscriber(Node):
         GPIO.setup(self.righten,GPIO.OUT)
         GPIO.output(self.rightin1pin,GPIO.LOW)
         GPIO.output(self.rightin2pin,GPIO.LOW)
-        self.rightpwm=GPIO.PWM(righten,1000)
+        self.rightpwm=GPIO.PWM(self.righten,1000)
         self.rightpwm.start(25)
 
     def change_left_motor(self, left_speed):
