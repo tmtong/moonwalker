@@ -52,6 +52,7 @@ class MotorSubscriber(Node):
         self.rightpwm.start(25)
 
     def change_left_motor(self, left_speed):
+        left_speed = float(left_speed)
         if left_speed < 0:
             self.leftpwm.ChangeDutyCycle(abs(left_speed))
             GPIO.output(self.leftin1pin,GPIO.LOW)
@@ -65,6 +66,7 @@ class MotorSubscriber(Node):
             GPIO.output(self.leftin1pin,GPIO.HIGH)
             GPIO.output(self.leftin2pin.GPIO.LOW)
     def change_right_motor(self, right_speed):
+        right_speed = float(right_speed)
         if right_speed < 0:
             self.rightpwn.ChangeDutyCycle(abs(right_speed))
             GPIO.output(self.leftin1pin,GPIO.LOW)
