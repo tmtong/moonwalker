@@ -8,6 +8,10 @@ import argparse
 class MotorSubscriber(Node):
 
     def __init__(self):
+        
+        self.init_pins()
+        # self.fake_pin()
+    def connect(self):
         super().__init__('motor_subscriber')
         self.subscription = self.create_subscription(
             Twist,
@@ -15,8 +19,6 @@ class MotorSubscriber(Node):
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
-        self.init_pins()
-        # self.fake_pin()
     def fake_pin(self):
         self.leftin1 = SimulatedPWN('leftin1')
         self.leftin2 = SimulatedPWN('leftin2')
@@ -119,7 +121,7 @@ def ros_loop():
     rclpy.init(args=args)
 
     motor_subscriber = MotorSubscriber()
-
+    motor_subscriber.connect()
     rclpy.spin(motor_subscriber)
 
     # Destroy the node explicitly
