@@ -55,7 +55,8 @@ class MotorSubscriber(Node):
 
         GPIO.output(self.leftin1pin,GPIO.LOW)
         GPIO.output(self.leftin2pin,GPIO.HIGH)
-
+        while True:
+            print('running')
     def change_left_motor(self, left_speed):
         print('left speed ' + str(left_speed))
         left_speed = float(left_speed)
