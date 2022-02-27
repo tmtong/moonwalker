@@ -154,7 +154,7 @@ def main(args=None):
     elif results.right_test != None and results.right_test != False:
         motor_subscriber = MotorSubscriber()
         motor_subscriber.change_right_motor(results.right_test)
-    elif results.ros != None:
+    elif results.ros != None and results.ros != False:
         ros_loop()
     
 
