@@ -53,6 +53,9 @@ class MotorSubscriber(Node):
         self.rightpwm=GPIO.PWM(self.righten,1000)
         self.rightpwm.start(25)
 
+        GPIO.output(self.leftin1pin,GPIO.LOW)
+        GPIO.output(self.leftin2pin,GPIO.HIGH)
+
     def change_left_motor(self, left_speed):
         print('left speed ' + str(left_speed))
         left_speed = float(left_speed)
