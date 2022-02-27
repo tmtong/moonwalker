@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from geometry_msgs.msg import Twist
 import json
 import argparse
