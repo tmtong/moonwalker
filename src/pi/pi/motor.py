@@ -120,8 +120,8 @@ class MotorSubscriber(Node):
             left_speed = -full_speed
             right_speed = -full_speed
         
-        change_left_wheel(left_speed)
-        change_right_wheel(right_speed)
+        self.change_left_wheel(left_speed)
+        self.change_right_wheel(right_speed)
         
        
 
