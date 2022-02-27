@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'sumomo'
+package_name = 'pi'
 
 setup(
     name=package_name,
@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'motor = sumomo.motor:main'
+                'motor = pi.motor:main',
+                'fakemotorpublisher = pi.fakemotorpublisher:main'
         ],
     },
 )

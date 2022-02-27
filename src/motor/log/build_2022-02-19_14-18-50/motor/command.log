@@ -1,6 +1,0 @@
-Invoking command in '/home/tmtong/Documents/sumomo/src/motor/build/motor': _=/usr/bin/env /usr/bin/cmake /home/tmtong/Documents/sumomo/src/motor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/tmtong/Documents/sumomo/src/motor/install/motor
-Invoked command in '/home/tmtong/Documents/sumomo/src/motor/build/motor' returned '0': _=/usr/bin/env /usr/bin/cmake /home/tmtong/Documents/sumomo/src/motor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/tmtong/Documents/sumomo/src/motor/install/motor
-Invoking command in '/home/tmtong/Documents/sumomo/src/motor/build/motor': _=/usr/bin/env /usr/bin/cmake --build /home/tmtong/Documents/sumomo/src/motor/build/motor -- -j8 -l8
-Invoked command in '/home/tmtong/Documents/sumomo/src/motor/build/motor' returned '0': _=/usr/bin/env /usr/bin/cmake --build /home/tmtong/Documents/sumomo/src/motor/build/motor -- -j8 -l8
-Invoking command in '/home/tmtong/Documents/sumomo/src/motor/build/motor': _=/usr/bin/env /usr/bin/cmake --install /home/tmtong/Documents/sumomo/src/motor/build/motor
-Invoked command in '/home/tmtong/Documents/sumomo/src/motor/build/motor' returned '1': _=/usr/bin/env /usr/bin/cmake --install /home/tmtong/Documents/sumomo/src/motor/build/motor
