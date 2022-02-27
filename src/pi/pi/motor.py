@@ -27,8 +27,8 @@ class MotorSubscriber(Node):
         self.rightin2 = SimulatedPWN('rightin2')
     def init_pins(self):
         print('init_pins')
-        self.leftin1pin = 24
-        self.leftin2pin = 23
+        self.leftin1pin = 23
+        self.leftin2pin = 24
         self.leften = 25
 
         self.rightin1pin = 27
@@ -61,16 +61,16 @@ class MotorSubscriber(Node):
         left_speed = float(left_speed)
         if left_speed < 0:
             self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1pin,GPIO.HIGH)
-            GPIO.output(self.leftin2pin,GPIO.LOW)
+            GPIO.output(self.leftin1pin,GPIO.LOW)
+            GPIO.output(self.leftin2pin,GPIO.HIGH)
         if left_speed == 0:
             self.leftpwm.ChangeDutyCycle(0)
             GPIO.output(self.leftin1pin,GPIO.LOW)
             GPIO.output(self.leftin2pin,GPIO.LOW)
         if left_speed > 0:
             self.leftpwm.ChangeDutyCycle(abs(left_speed))
-            GPIO.output(self.leftin1pin,GPIO.LOW)
-            GPIO.output(self.leftin2pin,GPIO.HIGH)
+            GPIO.output(self.leftin1pin,GPIO.HIGH)
+            GPIO.output(self.leftin2pin,GPIO.LOW)
     def change_right_motor(self, right_speed):
         print('right speed ' + str(right_speed))
         right_speed = float(right_speed)
