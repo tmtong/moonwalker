@@ -54,9 +54,14 @@ Look for
 idVendor           0x12d1 Huawei Technologies Co., Ltd.
 idProduct          0x14db E353/E3131
 ```
-Run this to convert to modem mode. You only need to do this once.
+It can presents as a CD drive with the USB ID of 12d1:1f01. 
+Switching to stick mode, it becomes 12d1:155e. 
+In Hilink mode, it is 12d1:14db
+You want it to be Hilink mode.
+Run this to convert to modem mode. You only need to do this once. The device will remember
 ```
-usb_modeswitch -v 12d1 -p 14db -M "55534243123456780000000000000a11062000000000000100000000000000"
+sudo usb_modeswitch -v 12d1 -p 1f01 -M 55534243123456780000000000000011063000000000010000000000000000
+sudo dhclient eth1
 ```
 Then you can use nmtui to activate eth1. Ping the connection using that specific device.
 ```
@@ -65,7 +70,14 @@ ping -I eth1 www.google.com
 
 ### Can also use the doogle as wifi to 4g bridge
 - Dont need to worry if you cannot use the doogle natively
-- You can just plug it in, have the wifi of pi to connect to the ssd of the doogle
+- You can just plug it in, have the wifi of pi to connect to the ssid of the doogle
+- sudo nmtui
+Add connection, 
+device: wlan0
+SSID: HUAWEI-85CE
+Mode: Client
+Security: WPA & WPA2 Personal
+Password: Remove the cover and look at 8 digits number
 
 ## Motor Driver 
 ![L298N](./L298N.jpg)
