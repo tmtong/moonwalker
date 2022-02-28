@@ -7,7 +7,7 @@ gitrcommit:
 	-git add src/*/*
 	-git add src/*/*/*
 	-git add src/*/*/*/*
-	-git add doc Makefile
+	-git add doc Makefile requirements.sh
 	-git commit -a -m "`date`"
 	git pull
 	git push origin HEAD
